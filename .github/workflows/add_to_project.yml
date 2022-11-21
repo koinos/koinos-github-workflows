@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     name: Assign issue/pull request to project
     steps:
+    - uses: monry/actions-get-project-id@v2
+    id: get-project-id # requires `id` to refer output values with after steps
+    with:
+      github-token: ${{ secrets.github-token }}
+      project-owner: 'koinos'
+      project-number: 6
+    - run: |
+      echo '${{ steps.get-project-id.outputs.project-id }}'
 #    - name: Assign new pull requests
 #      uses: monry/actions-add-issue-to-project@v2
 #      if: github.event.name == 'pull_request'
@@ -21,6 +29,7 @@ jobs:
 #        issue-id: ${{ github.event.pull_request.node_id }}
 
     - name: Assign issues with `bug` or `enhancement` label to project
+      id: add-issue-to-project
       uses: monry/actions-add-issue-to-project@v2
       if: |
         contains(github.event.issue.labels.*.name, 'bug') ||
@@ -30,3 +39,5 @@ jobs:
         project-owner: 'koinos'
         project-number: 6
         issue-id: ${{ github.event.issue.node_id }}
+    - run: |
+      echo '${{ steps.add-issue-to-project.outputs.added-project-item-id }}'
