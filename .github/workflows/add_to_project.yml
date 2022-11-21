@@ -18,7 +18,7 @@ jobs:
 #        project-owner: 'koinos'
 #        project-number: 6
 #    - run: |
-#      echo '${{ steps.get-project-id.outputs.project-id }}'
+#        echo '${{ steps.get-project-id.outputs.project-id }}'
 #    - name: Assign new pull requests
 #      uses: monry/actions-add-issue-to-project@v2
 #      if: github.event.name == 'pull_request'
@@ -40,4 +40,4 @@ jobs:
         project-number: 6
         issue-id: ${{ github.event.issue.node_id }}
     - run: |
-      echo '${{ steps.add-issue-to-project.outputs.added-project-item-id }}'
+        echo '${{ steps.add-issue-to-project.outputs.added-project-item-id }}'
