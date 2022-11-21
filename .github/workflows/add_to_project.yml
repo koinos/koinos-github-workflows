@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     name: Assign issue/pull request to project
     steps:
-    - uses: monry/actions-get-project-id@v2
-    id: get-project-id # requires `id` to refer output values with after steps
-    with:
-      github-token: ${{ secrets.github-token }}
-      project-owner: 'koinos'
-      project-number: 6
-    - run: |
-      echo '${{ steps.get-project-id.outputs.project-id }}'
+#    - uses: monry/actions-get-project-id@v2
+#      id: get-project-id # requires `id` to refer output values with after steps
+#      with:
+#        github-token: ${{ secrets.github-token }}
+#        project-owner: 'koinos'
+#        project-number: 6
+#    - run: |
+#      echo '${{ steps.get-project-id.outputs.project-id }}'
 #    - name: Assign new pull requests
 #      uses: monry/actions-add-issue-to-project@v2
 #      if: github.event.name == 'pull_request'
