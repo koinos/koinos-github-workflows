@@ -15,7 +15,7 @@ jobs:
 #      uses: monry/actions-add-issue-to-project@v2
 #      if: github.event.name == 'pull_request'
 #      with:
-#        github-token: ${{ secrets.github_token }}
+#        github-token: ${{ secrets.github-token }}
 #        project-owner: 'koinos'
 #        project-number: 6
 #        issue-id: ${{ github.event.pull_request.node_id }}
@@ -26,7 +26,7 @@ jobs:
         contains(github.event.issue.labels.*.name, 'bug') ||
         contains(github.event.issue.labels.*.name, 'enhancement')
       with:
-        github-token: ${{ secrets.github_token }}
+        github-token: ${{ secrets.github-token }}
         project-owner: 'koinos'
         project-number: 6
         issue-id: ${{ github.event.issue.node_id }}
