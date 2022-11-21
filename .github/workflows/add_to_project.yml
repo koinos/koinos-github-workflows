@@ -1,30 +1,32 @@
 name: Auto Assign to Project
 
 on:
-  issues:
-    types: [opened]
-  pull_request:
-    types: [opened]
-env:
-  MY_GITHUB_TOKEN: ${{ secrets.ISSUE_MANAGEMENT_TOKEN }}
+  workflow_call:
+    secrets:
+      github-token:
+        required: true
 
 jobs:
   assign_to_project:
     runs-on: ubuntu-latest
     name: Assign issue/pull request to project
     steps:
-    - name: Assign new pull requests
-      uses: srggrs/assign-one-project-github-action@1.2.1
-      if: github.event.name == 'pull_request'
-      with:
-        project: 'https://github.com/orgs/koinos/projects/6'
-        column_name: 'In Review'
+#    - name: Assign new pull requests
+#      uses: monry/actions-add-issue-to-project@v2
+#      if: github.event.name == 'pull_request'
+#      with:
+#        github-token: ${{ secrets.github_token }}
+#        project-owner: 'koinos'
+#        project-number: 6
+#        issue-id: ${{ github.event.pull_request.node_id }}
 
     - name: Assign issues with `bug` or `enhancement` label to project
-      uses: srggrs/assign-one-project-github-action@1.2.1
+      uses: monry/actions-add-issue-to-project@v2
       if: |
         contains(github.event.issue.labels.*.name, 'bug') ||
         contains(github.event.issue.labels.*.name, 'enhancement')
       with:
-        project: 'https://github.com/orgs/koinos/projects/6'
-        column_name: 'Awaiting Triage'
+        github-token: ${{ secrets.github_token }}
+        project-owner: 'koinos'
+        project-number: 6
+        issue-id: ${{ github.event.pull_request.node_id }}

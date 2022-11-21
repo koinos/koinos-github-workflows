@@ -1,7 +1,10 @@
 name: Close inactive issues
+
 on:
-  schedule:
-    - cron: "0 0 * * *" # Run every day at midnight
+  workflow_call:
+    secrets:
+      github-token:
+        required: true
 
 jobs:
   close-issues:
@@ -21,4 +24,4 @@ jobs:
           close-issue-message: "This issue was closed because it has been inactive for 14 days since being marked as stale."
           stale-pr-message: "This pull request is stale because it has been open for 30 days with no activity."
           close-pr-message: "This pull request was closed because it has been inactive for 14 days since being marked as stale."
-          repo-token: ${{ secrets.ISSUE_MANAGEMENT_TOKEN }}
+          repo-token: ${{ secrets.github-token }}
