@@ -29,4 +29,4 @@ jobs:
         github-token: ${{ secrets.github_token }}
         project-owner: 'koinos'
         project-number: 6
-        issue-id: ${{ github.event.pull_request.node_id }}
+        issue-id: ${{ github.event.issue.node_id }}
