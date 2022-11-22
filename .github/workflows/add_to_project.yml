@@ -13,16 +13,16 @@ jobs:
     steps:
 
 #    - name: Assign new pull requests
-#      uses: monry/actions-add-issue-to-project@v2
+#      uses: actions/add-to-project@v0.4.0
 #      if: github.event.name == 'pull_request'
 #      with:
+#        project-url: https://github.com/orgs/koinos/projects/6
 #        github-token: ${{ secrets.github-token }}
-#        project-owner: 'koinos'
-#        project-number: 6
-#        issue-id: ${{ github.event.pull_request.node_id }}
+
 
     - name: Assign issues with `bug` or `enhancement` label to project
       uses: actions/add-to-project@v0.4.0
+      if: github.event.name == 'issue'
       with:
         project-url: https://github.com/orgs/koinos/projects/6
         github-token: ${{ secrets.github-token }}
