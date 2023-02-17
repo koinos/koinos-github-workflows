@@ -9,5 +9,3 @@ on:
 jobs:
   assign_to_project:
     uses: koinos/koinos-github-workflows/.github/workflows/add_to_project.yml@master
-    secrets:
-      github-token: ${{ secrets.ISSUE_MANAGEMENT_TOKEN }}
