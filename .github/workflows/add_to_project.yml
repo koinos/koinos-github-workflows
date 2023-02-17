@@ -1,7 +1,10 @@
-name: Auto Assign to Project
+name: Auto assign to project
 
 on:
-  workflow_call:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
 
 jobs:
   assign_to_project:
