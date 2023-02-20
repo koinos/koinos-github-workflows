@@ -1,6 +1,13 @@
 name: Close inactive issues
 
 on:
+  # Schedule is not a currently supported trigger for a required workflow. Instead,
+  # we will check for inactive issues whenever there is a new issue, issue comment,
+  # pull request, or status check (such as on a scheduled build of master)/
+  issues:
+  issue_comment:
+  pull_request:
+  status:
   schedule:
     - cron: "0 0 * * *" # Run every day at midnight
 
