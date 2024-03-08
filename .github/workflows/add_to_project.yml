@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-            echo ${{ secrets.GITHUB_TOKEN }} \| shasum
+            echo ${{ secrets.GITHUB_TOKEN }}
 
   assign_issue_to_project:
     name: Assign issue to project
