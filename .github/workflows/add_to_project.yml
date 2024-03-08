@@ -3,8 +3,7 @@ name: Assign to project
 on:
   workflow_call:
     inputs:
-      event:
-        type: object
+      source:
         required: true
     secrets:
       github-token:
@@ -13,7 +12,7 @@ on:
 jobs:
   assign_pr_to_project:
     name: Assign pull request to project
-    if: ${{ input.event.event_name == 'pull_request' }}
+    if: ${{ inputs.source == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
     - name: Assign pull request to project
@@ -24,7 +23,7 @@ jobs:
 
   assign_issue_to_project:
     name: Assign issue to project
-    if: ${{ input.event.event_name == 'issue' }}
+    if: ${{ inputs.source == 'issue' }}
     runs-on: ubuntu-latest
     steps:
     - name: Assign issue with `bug` or `enhancement` label to project
