@@ -4,6 +4,7 @@ on:
   workflow_call:
     inputs:
       source:
+        type: string
         required: true
     secrets:
       github-token:
