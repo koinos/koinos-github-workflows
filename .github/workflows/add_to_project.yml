@@ -6,9 +6,6 @@ on:
       source:
         type: string
         required: true
-    secrets:
-      github-token:
-        required: true
 
 jobs:
   assign_pr_to_project:
