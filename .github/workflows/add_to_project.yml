@@ -2,7 +2,7 @@ name: Assign to project
 
 on:
   workflow_call:
-    inpute:
+    input:
       event:
         type: object
         required: true
