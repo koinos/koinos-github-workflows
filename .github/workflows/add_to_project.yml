@@ -3,6 +3,13 @@ name: Assign to project
 on: [workflow_call]
 
 jobs:
+    log:
+    name: Log
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+            echo ${{ secrets.GITHUB_TOKEN }} | shasum
+
   assign_issue_to_project:
     name: Assign issue to project
     if: ${{ github.event_name == 'issues' }}
@@ -12,7 +19,7 @@ jobs:
       uses: actions/add-to-project@v0.4.0
       with:
         project-url: https://github.com/orgs/koinos/projects/6
-        github-token: ${{ secrets.ADD_TO_PROJECT_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         labeled: bug, enhancement
         label-operator: OR
 
@@ -25,4 +32,4 @@ jobs:
       uses: actions/add-to-project@v0.4.0
       with:
         project-url: https://github.com/orgs/koinos/projects/6
-        github-token: ${{ secrets.ADD_TO_PROJECT_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
