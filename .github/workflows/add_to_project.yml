@@ -8,6 +8,10 @@ on:
         required: true
 
 jobs:
+  log:
+    name: Log
+    run: echo ${{ inputs.source }}
+
   assign_pr_to_project:
     name: Assign pull request to project
     if: ${{ inputs.source == 'pull_request' }}
